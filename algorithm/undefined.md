@@ -36,7 +36,7 @@ function linearRuntime(n) {
 
 ### **O\(n²\) - 2차 시간\(Quadratic Runtime\) 복잡도**
 
-처리해야할 데이터의 양의 제곱의 시간 복잡도를 가지는 알고리즘이며 느리다. 반복문 2개가 중첩되어 있는 경우가 있다. 
+처리해야할 데이터의 양의 제곱의 시간 복잡도를 가지는 알고리즘이다. 반복문 2개가 중첩되어 있는 경우가 있다. 
 
 ```javascript
 function quadraticRuntime(n) {
