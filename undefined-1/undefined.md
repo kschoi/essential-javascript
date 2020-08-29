@@ -11,64 +11,71 @@
 
 
 
+### **O\(1\) - 상수 시간\(Constant Runtime\) 복잡도**
 
-
-**O\(1\) - 상수 시간\(Constant Runtime\)**
-
-An algorithm that is O\(1\), is said to be "Big O of 1" or **constant**, and does not vary depending on the size of the input. This is good. This is fast even for very large values of n.
+데이터의 양과 상관없이 항상 일정한 실행 시간을 갖는 알고리즘이다. \(입력공간에 대해 변하지 않는다.\) O\(1\)의 예로 배열에 있는 항목을 인덱스로 사용해 접근하는 경우가 있다.
 
 ```javascript
-function constantRuntime(x) {
-  var result = x * 2;
+function constantRuntime(n) {
+  var result = n * 2;
   return result;
 }
 ```
 
-**O\(N\) - Linear Runtime**
+### **O\(n\) - 선형 시간\(Linear Runtime\) 복잡도**
 
-An algorithm that is O\(n\), is said to be "Big O of n" or **linear**, and this indicates that the resources required grow proportionally to the size of the input. This is reasonable performance.
+처리해야할 데이터의 양에 비례하여 실행 시간도 증가하는 알고리즘이다. O\(n\)의 예로 0부터 n-1까지의 숫자를 출력하는 경우가 있다.
 
 ```javascript
-function linearRuntime(x) {
-  for (var i = 0; i < x; i++) {
+function linearRuntime(n) {
+  for (var i = 0; i < n; i++) {
     console.log(i);
   }
 }
 ```
 
-**O\(n2\) - Quadratic Runtime**
+### **O\(n²\) - 2차 시간\(Quadratic Runtime\) 복잡도**
 
-An algorithm that is O\(n^2\), is said to be "Big O of n squared" or **quadratic**, and it means the resources grow in proportion to the square of the input. This is **slow**. Think of really big numbers and then think of them squared.
+처리해야할 데이터의 양의 제곱의 시간 복잡도를 가지는 알고리즘이며 느리다. 반복문 2개가 중첩되어 있는 경우가 있다. 
 
 ```javascript
-function quadraticRuntime(x) {
-  for (var i = 0; i < x; i++) {
-    for (var j = 0; j < x; j++) {
+function quadraticRuntime(n) {
+  for (var i = 0; i < n; i++) {
+    for (var j = i; j < n; j++) {
       console.log(i * j);
     }
   }
 }
 ```
 
-**O\(log\(n\)\) - Logarithmic Runtime**
+### **O\(n³\) - 3차 시간\(Cubic Runtime\) 복잡도**
 
-An algorithm that is O\(log\(n\)\), is said to be "Big O of log n" or **logarithmic**, and it means the resources grow to the inverse of exponential growth. This is **fast!** Algorithms that grow this slow are great!
+반복문이 3번 중첩되어 있는 경우의 알고리즘이다. 매우 느리다.
 
-Think of logarithmic algorithms as cutting the amount of work to do in half at each step of the way. Big numbers are quickly halved down to smaller and smaller numbers.
+```javascript
+function cubicRuntime(n) {
+  for (var i = 0; i < n; i++) {
+    for (var j = i; j < n; j++) {
+      for (var k = j; k < n; k++) {
+        console.log(i * j * k);
+      }
+    }
+  }
+}
+```
 
-Binary search is a classic O\(log\(n\)\) algorithm.
+### **O\(log\(n\)\) - 로그 시간\(Logarithmic Runtime\) 복잡도**
 
-Imagine flipping through a phone book to find someone's number. A linear O\(N\) algorithm would start at the beginning of the phone book and read every name on every page until it found the name you're looking for. This is terribly slow!
+실행 시간의 증가폭이 log n 그래프를 가지므로 처리해야할 데이터의 양이 클 때 효율이 분명하다. 예를 들어 2의 2승부터 n승까지의 항목들을 처리하는 경우가 있다. 
 
-Instead of reading every single name it's much easier to read one random name and flip far forward or backward depending on how close that name is to the name you're looking for.
-
-This only works because the phone book is sorted by names. Imagine trying to do a reverse look up on a mysterious phone number using a phone book. You'd have to start at the beginning and look at every single entry!
-
-One million can be split in half roughly twenty times before getting down to one. Imagine looking for a name in a phone book with a million pages and see how quickly the amount of pages left to look through goes down:
-
-1,000,000 pages left 500,000 pages left 250,000 pages left 125,000 pages left 64,000 pages left 32,000 pages left 16,000 pages left 8,000 pages left 4,000 pages left 2,000 pages left 1,000 pages left 500 pages left 250 pages left 125 pages left 64 pages left 32 pages left 16 pages left 8 pages left 4 pages left 2 pages left 1 page left
-
-Here's an actual implementation of using binary search to look for things efficiently in an array in JavaScript:
+```javascript
+function logarithmicRuntime(n) {
+  for (var i = 2; i <= n; i=i*2) {
+    console.log(i);
+  }
+}
+// logarithmicRuntime(10) => 2,4,8,16,32,64
+```
 
 ```javascript
 function binarySearch(arr, search) {
@@ -96,11 +103,11 @@ function binarySearch(arr, search) {
 }
 ```
 
-**O\(n log\(n\)\) - Efficient Sorting Algorithms**
+### **O\(n log\(n\)\) - Efficient Sorting Algorithms**
 
-This is another common measure of complexity. It usually appears when dealing with sorting algorithms. Think of an `n log(n)` algorithm as doing a binary search for each thing in an array. It performs an `log(n)` operation `n` times, so we multiply them together.
+처리해야할 데이터의 양에 비해 정비례보다 약간 더 증가하는 실행 시간을 갖게 된다. 효율이 좋은 정렬 알고리즘의 성능이 이에 해당한다.
 
-See the [Cheat Sheet](http://bigocheatsheet.com/) for some other common time \(processing time\) and space \(memory\) complexities and their notations.
+* [빅오표기법 cheatsheet](https://www.bigocheatsheet.com/)
 
 
 
