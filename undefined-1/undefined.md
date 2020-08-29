@@ -107,6 +107,20 @@ function binarySearch(arr, search) {
 
 처리해야할 데이터의 양에 비해 정비례보다 약간 더 증가하는 실행 시간을 갖게 된다. 효율이 좋은 정렬 알고리즘의 성능이 이에 해당한다.
 
+### O\(∞\) - 무한루프
+
+함수가 종료되지 않는다.
+
+```javascript
+function infiniteRuntime(n) {
+    white(true) {
+        console.log(n);
+    }
+}
+```
+
+
+
 ### 자주 사용되는 빅오 표기법 규칙
 
 * 계수/상수 제거하기\(계수 법칙\)
@@ -114,11 +128,7 @@ function binarySearch(arr, search) {
 * 빅오 곱하기\(곱의 법칙\)
 * 루프를 조사해 빅오 표기법의 다항 결정하기\(다항 법칙\)
 
-### 출처
-
-* 자바스크립트로 하는 자료구조와 알고리즘
-* 필수알고리즘 with 파이썬
-* [https://wdi-sg.github.io/gitbook-2018/08-cs/cs-algorithm-complexity/readme.html](https://wdi-sg.github.io/gitbook-2018/08-cs/cs-algorithm-complexity/readme.html)
+### 
 
 
 
