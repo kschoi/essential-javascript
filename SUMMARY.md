@@ -2,7 +2,11 @@
 
 * [들어가기](README.md)
 
-## 자료구조와 알고리즘 <a id="undefined-1"></a>
+## 자료형 <a id="type"></a>
 
-* [빅오 표기법](undefined-1/undefined.md)
+* [number](type/number.md)
+
+## 자료구조와 알고리즘 <a id="algorithm"></a>
+
+* [빅오 표기법](algorithm/undefined.md)
 
