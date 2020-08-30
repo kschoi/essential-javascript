@@ -79,11 +79,3 @@ Number.MIN_VALUE -1 == -1 // true;
 < Infinity;
 ```
 
-
-
-
-
-
-
-
-
