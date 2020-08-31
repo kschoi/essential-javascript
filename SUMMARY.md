@@ -6,4 +6,5 @@
 
 * [빅오 표기법](algorithm/undefined.md)
 * [숫자](algorithm/number.md)
+* [정규표현식](algorithm/regexp.md)
 
