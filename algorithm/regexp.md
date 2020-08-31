@@ -42,7 +42,7 @@ var reg = /^[0-9]*.[0-9]*[1-9]+$/;
 reg.test("12"); // true
 reg.test("12.2"); // true
 
-// 숫자와 알파벳만을 포함하는 문
+// 숫자와 알파벳만을 포함하는 문자 
 var reg = /[a-zA-Z0-9]/;
 reg.test("abcdABCD1234"); // true
 reg.test("^"); // false
