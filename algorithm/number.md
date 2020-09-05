@@ -31,6 +31,8 @@ IEEE 754의 부동 소수점 표현은 크게 세 부분으로 구성되는데, 
 Number.EPSILON은 두 개의 표현 가능한 숫자 사이의 가장 작은 간격을 반환한다. 이는 부동소수점 근사치를 활용해 분수가 제대로 표현되지 않는 문제를 해결하는 데 유용하다. ES2015에서 최초 정의되었다.
 
 ```javascript
+0.1+0.2 == 0.3 // false
+
 function numberEquals(x, y) {
     return Math.abs(x - y) < Number.EPSILON;
 }

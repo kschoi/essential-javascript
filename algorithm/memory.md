@@ -56,13 +56,15 @@ one.addEventListener('click', () => {
 ```javascript
 var one = document.getElementById("one");
 
-one.addEventListener('click', () => {
+function callbackOne() {
     // 콜백 함수 내부에서 DOM을 참조한다.
     var two = document.getElementById("two");
     two.remove();
-});
-// 이벤트 핸들러를 사용한 뒤 핸들러를 해지하는 방법도 있다.
-one.removeEventListener('click');
+    // 이벤트 핸들러를 사용한 뒤 핸들러를 해지다.
+    one.removeEventListener('click', callbackOne);
+}
+
+one.addEventListener('click', callbackOne);
 ```
 
 ### windows 전역 객체
