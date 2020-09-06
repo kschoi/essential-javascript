@@ -1,6 +1,6 @@
 # 정규표현식
 
-정규 표현식은 검색 패턴을 정의한 문자열들의 집합이다. 자바스크립트는 정규식에 사용할 수 있는 기본 객체 RegExp가 있다.
+정규 표현식은 검색 패턴을 정의한 문자열들의 집합이다. 자바스크립트는 정규식에 사용할 수 있는 기본 객체 [RegExp](https://developer.mozilla.org/ko/docs/Web/JavaScript/Reference/Global_Objects/RegExp)가 있다.
 
 ### RegExp 객체
 
