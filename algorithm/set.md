@@ -93,3 +93,33 @@ var setA = new Set([1, 2, 3, 4]),
 differenceSet(setA, setB); // Set(2) {1, 4}
 ```
 
+### 배열 중복 항목 확인하기
+
+```javascript
+function checkDuplicates(arr) {
+    // 배열을 Set으로 변환함으로써 길이를 비교해 중복 여부를 확인할 수 있다.
+    var mySet = new Set(arr);
+    return mySet.size < arr.length;
+}
+checkDuplicates([1,2,3,4,5]); // false
+checkDuplicates([1,1,2,3,4,5]); // true
+```
+
+* 시간 복잡도: O\(n\)
+* 공간 복잡도: O\(n\)
+
+### 여러 배열에서 유일한 값 배 반환하기
+
+```javascript
+function uniqueList(arr1, arr2) {
+    var mySet = new Set(arr1.concat(arr2));
+    return Array.from(mySet);
+}
+uniqueList([1,1,2,2],[2,3,4,5]); // [1,2,3,4,5]
+uniqueList([1,2],[3,4,5]); // [1,2,3,4,5]
+uniqueList([],[2,2,3,4,5]); // [2,3,4,5]
+```
+
+* 시간 복잡도: O\(n+m\)
+* 공간 복잡도: O\(n+m\)
+
