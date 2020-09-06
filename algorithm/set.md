@@ -20,6 +20,8 @@ set1.delete(6); // true
 set1.has(1); // true
 ```
 
+## 문제풀이
+
 ### 교집합\(A∩B\)
 
 ```javascript
