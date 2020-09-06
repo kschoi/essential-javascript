@@ -1,15 +1,15 @@
-# recursion \(재귀\)
+# 재귀
 
-recursion은 자기 자신을 호출하는 함수이다. recursion은 base case\(기저 조건\)와 recursive case\(재귀 조건\)로 구성된다.
+재귀\(recursion\)는 자기 자신을 호출하는 함수이다. 재귀는 base case\(기저 조건\)와 recursive case\(재귀 조건\)로 구성된다.
 
 ```javascript
 function func(n) {
-	// Base case: 적어도 하나의 recursion에 빠지지 않는 경우가 존재해야 한다.
+	// base case: 적어도 하나의 recursion에 빠지지 않는 경우가 존재해야 한다.
 	if (n<=0) 
 		return 0;
 	else {
 		console.log("Hello");
-		// Recursive case: recursion을 반복하다보면 결국 Base case로 수렴해야 한다.
+		// recursive case: recursion을 반복하다보면 결국 Base case로 수렴해야 한다.
 		func(n-1); 
 	}
 }
