@@ -1,6 +1,6 @@
-# 재귀
+# recursion \(재귀\)
 
-재귀\(Recursion\)는 자기 자신을 호출하는 함수이다. 재귀함수는 기저 조건\(base case\)와 재귀 조건\(recursive case\)으로 구성된다.
+recursion 자기 자신을 호출하는 함수이다. recursion은 기저 조건\(base case\)와 재귀 조건\(recursive case\)으로 구성된다.
 
 ```javascript
 function func(n) {
