@@ -108,7 +108,7 @@ checkDuplicates([1,1,2,3,4,5]); // true
 * 시간 복잡도: O\(n\)
 * 공간 복잡도: O\(n\)
 
-### 여러 배열에서 유일한 값 배 반환하기
+### 여러 배열에서 유일한 값 배열 반환하기
 
 ```javascript
 function uniqueList(arr1, arr2) {
