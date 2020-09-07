@@ -213,28 +213,30 @@ var dictionary = {
         }
     }
 }
-function flattenDictionary(dictionary) {
-    var flattenedDictionary = {};
+function getFlattenDictionary(dictionary) {
+  const flattenDictionary = {};
 
-    function flattenDitionaryHelper(dictionary, propName) {
-				// base case: 객체가 아닐 때
-        if (typeof dictionary != 'object') {
-            flattenedDictionary[propName] = dictionary;
-            return;
-        }
-        for (var prop in dictionary) {
-            if (propName == ''){
-                flattenDitionaryHelper(dictionary[prop], propName+prop);
-            } else {
-                flattenDitionaryHelper(dictionary[prop], propName+'.'+prop);
-            }
-        }
+  // '키.서브키'의 키값으로 객체를 펼치기 위한 헬퍼 함수
+  function flattenDictionaryHelper(subDictionary, propName) {
+    // base case: 객체가 아닐 때
+    if (typeof subDictionary !== 'object') {
+      flattenDictionary[propName] = subDictionary;
+      return;
     }
+    // recursive case: '키.서브키'의 키값으로 재귀
+    Object.keys(subDictionary).forEach(prop => {
+      if (propName === '') {
+        flattenDictionaryHelper(subDictionary[prop], propName + prop);
+      } else {
+        flattenDictionaryHelper(subDictionary[prop], `${propName}.${prop}`);
+      }
+    });
+  }
 
-    flattenDitionaryHelper(dictionary, '');
-    return flattenedDictionary;
+  flattenDictionaryHelper(dictionary, '');
+  return flattenDictionary;
 }
-flattenDictionary(dictionary);
+getFlattenDictionary(dictionary);
 // {Key1: "1", Key2.a: "2", Key2.b: "3", Key2.c.d: "3", Key2.c.e: "1"}
 ```
 

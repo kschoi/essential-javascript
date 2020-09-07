@@ -60,7 +60,7 @@ function callbackOne() {
     // 콜백 함수 내부에서 DOM을 참조한다.
     var two = document.getElementById("two");
     two.remove();
-    // 이벤트 핸들러를 사용한 뒤 핸들러를 해지다.
+    // 이벤트 핸들러를 사용한 뒤 핸들러를 해지한다.
     one.removeEventListener('click', callbackOne);
 }
 
