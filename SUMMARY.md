@@ -10,4 +10,6 @@
 * [메모리 관리](algorithm/memory.md)
 * [재귀](algorithm/recursion.md)
 * [집합](algorithm/set.md)
+* [검색](algorithm/search.md)
+* [정렬](algorithm/sort.md)
 
