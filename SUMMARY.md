@@ -12,4 +12,5 @@
 * [집합](algorithm/set.md)
 * [검색](algorithm/search.md)
 * [정렬](algorithm/sort.md)
+* [해시테이블](algorithm/hash.md)
 
