@@ -1,10 +1,14 @@
-# 숫자 정확도 검증
+# 숫자\(number\)
 
-설계 명세서에 의하면 자바스크립트에서 수는 "**이중정밀도 64비트 형식 IEEE 754 값**"으로 정의된다. 
+`number`는 자바스크립트의 원시 데이터 타입 중 하나로, 값 자체로는 불변하고 아무 기능이 없다. number  데이터 타입에 대응하는 `Number` 래퍼 오브젝트가 존재한다. 래퍼 오브젝트는 명시적 코드가 없더라도 상황에 따라 암묵적으로 작동한다.
 
-#### IEEE 754의 부동소수점 방식 
+```javascript
+'hello, world'.toUpperCase(); // 암묵적 랩핑
+```
 
-IEEE 754의 부동 소수점 표현은 크게 세 부분으로 구성되는데, 최상위 비트는 부호를 표시하는 데 사용되며, 지수 부분\(exponent\)과 가수 부분\(fraction/mantissa\)이 있다.
+## IEEE 754의 부동소수점 방식
+
+설계 명세서에 의하면 자바스크립트에서 `number`는 "이중정밀도 64비트 형식 IEEE 754 값"으로 정의된다. IEEE 754의 부동 소수점 표현은 크게 세 부분으로 구성되는데, 최상위 비트는 부호를 표시하는 데 사용되며, 지수 부분\(exponent\)과 가수 부분\(fraction/mantissa\)이 있다.
 
 \[예시\] −118.625 \(십진법\)을 IEEE 754 \(32비트 단정밀도\)로 표현해 보자. 
 
@@ -22,11 +26,65 @@ IEEE 754의 부동 소수점 표현은 크게 세 부분으로 구성되는데, 
 자바스크립트는 이중정밀도 64비트 형식이므로 63번째가 부호 비트, 다음 열한 개의 비트\(62번째부터 52번째 비트\)는 지수 값 e를 나타낸다. 마지막으로 나머지 52비트가 분수값을 나타낸다.
 {% endhint %}
 
-## 정확도 문제 해결하기
+## 숫자를 문자로 변환하기
+
+```javascript
+100+'';                       // "100" (형변환을 이용하여 변환)
+Number(100).toString();       // "100" (문자열 반환 메소드 이용)
+Number(100.12345).toFixed();  // "100" (소수점 제거후 문자열 반환 메소드 이용)
+Number(100.12345).toFixed(1); // "100.1"
+Number(100.12345).toFixed(3); // "100.12"
+```
+
+## 숫자 검사와 유효 범위
 
 자바스크립트에는 정수와 같은 것이 존재하지 않고, 모든 숫자를 부동소수점을 사용하기 때문에 산술할 때 주의해야 한다. 부동 소수점으로 표현한 수가 실수를 정확히 표현하지 못하고 부동 소수점 연산 역시 실제 수학적 연산을 정확히 표현하지 못하기 때문에 여러가지 문제를 낳는다. 이 같은 문제를 해결하는 데 도움이 되는 Number 객체의 내장 속성들이 있다.
 
-### Number.EPSILON
+### 정수 판별하기
+
+```javascript
+Number.isInteger(100.23); // false
+```
+
+### NaN 판별하기
+
+```javascript
+Number.isNaN(NaN); // true
+Number.isNaN(Number.NaN); // true
+Number.isNaN(0 / 0); // true
+
+Number.isNaN('NaN'); // false
+Number.isNaN(undefined); // false
+Number.isNaN({}); // false
+Number.isNaN('blabla'); // false
+
+// 모두 False
+Number.isNaN(true);
+Number.isNaN(null);
+Number.isNaN(37);
+Number.isNaN('37');
+Number.isNaN('37.37');
+Number.isNaN('');
+Number.isNaN(' ');
+
+NaN === NaN; // false
+NaN !== NaN; // true
+typeof NaN === 'number'; // true
+```
+
+### 숫자인지 판별하기
+
+```javascript
+/**
+* 숫자인지를 판별하기 위해 제공되는 자바스크립트의 기능이 불안전하기 때문에
+* 값의 숫자 판별하기 위한 안전한 방법은 다음과 같다
+*/
+function isNumber(value) {
+  return typeof value === 'number' && Number.isFinite(value);
+}
+```
+
+### 동일한 숫자인지 판별하기
 
 Number.EPSILON은 두 개의 표현 가능한 숫자 사이의 가장 작은 간격을 반환한다. 이는 부동소수점 근사치를 활용해 분수가 제대로 표현되지 않는 문제를 해결하는 데 유용하다. ES2015에서 최초 정의되었다.
 
